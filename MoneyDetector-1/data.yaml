@@ -1,0 +1,8 @@
+path: ../datasets/roboflow
+
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 8
+names: ['Fifty', 'Five', 'Five Hundred', 'One', 'One Hundred', 'One Thousand', 'Ten', 'Twenty']

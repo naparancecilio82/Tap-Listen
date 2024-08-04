@@ -1,0 +1,14 @@
+path: C:\Users\User\PycharmProjects\pythonProject1\YOLO\train_data # dataset root dir
+train: C:\Users\User\PycharmProjects\pythonProject1\YOLO\train_data\images\train # train images
+val: C:\Users\User\PycharmProjects\pythonProject1\YOLO\train_data\images\val # val images
+
+# Classes
+names:
+  0 : one thousand
+  1 : five hundred
+  2 : one hundred
+  3 : fifty
+  4 : twenty
+  5 : ten
+  6 : five
+  7 : one

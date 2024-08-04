@@ -1,0 +1,585 @@
+<CustomBoxLayout>:
+    md_bg_color: app.bg_color
+
+<WelcomePage>:
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            md_bg_color: 1, 1, 1, 1
+
+            MDBoxLayout:
+                orientation: "vertical"
+                size_hint: 1, 5
+                md_bg_color: 1,1,1,1
+
+                Image:
+                    source: "Assets/Icons/Welcome to Tap&Listen!.png"
+                    pos: self.parent.pos
+                    size: self.parent.size
+
+        CustomBoxLayout:
+
+            Image:
+                source: "Assets/Icons/Introduction.png"
+                pos: self.parent.pos
+                #pos_hint: {'center_x' : .5, 'center_y' : .5}
+                size: self.parent.size
+
+        CustomBoxLayout:
+            size_hint: 1, .4
+
+        CustomBoxLayout:
+            size_hint: 1, .2
+
+            Button:
+                pos: self.parent.pos
+                size: self.parent.size
+                background_color: 0, 0, 0, 0
+                on_press: root.manager.current = 'homeScreen'
+
+                Image:
+                    source: "Assets/Icons/Access Button.png"
+                    pos: self.parent.pos
+                    #center_x: self.parent.center_x
+                    #center_y: self.parent.center_y
+                    size: self.parent.size
+
+
+<HomeScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            md_bg_color: app.bar_color
+
+            MDBoxLayout:
+                orientation: "vertical"
+                size_hint: 1, 5
+                md_bg_color: app.bar_color
+
+                Image:
+                    id: homePage_img
+                    source: "Assets/Icons/HOME PAGE.png"
+                    pos: self.parent.pos
+                    #pos_hint: {'center_x' : .5, 'center_y' : .5}
+                    size: self.parent.size
+
+        CustomBoxLayout:
+            size_hint: (1, .2)
+
+        CustomBoxLayout:
+            orientation: "vertical"
+
+            CustomBoxLayout:
+                orientation: "vertical"
+                size_hint: 1, 1
+                spacing: 2
+
+                Button:
+                    pos: self.parent.pos
+                    size: self.parent.size
+                    background_color: 0, 0, 0, 0
+                    on_press: app.convert_to_speak("Capture")
+                    on_press: root.manager.current = 'captureScreen'
+
+                    Image:
+                        id: capture_img
+                        source: "Assets/Icons/Capture Button (1).png"
+                        pos: self.parent.pos
+                        pos_hint: {'center_x' : .5, 'center_y' : .2}
+                        size: self.parent.size
+
+                Button:
+                    pos: self.parent.pos
+                    size: self.parent.size
+                    background_color: 0, 0, 0, 0
+                    on_press: app.convert_to_speak("Settings")
+                    on_press: root.manager.current = 'settingsScreen'
+
+                    Image:
+                        id: settings_img
+                        source: "Assets/Icons/Settings Button (1).png"
+                        pos: self.parent.pos
+                        size: self.parent.size
+        CustomBoxLayout:
+            size_hint: (1, .2)
+
+<SettingsScreen>:
+    MDBoxLayout:
+        md_bg_color: 0,0,0,0
+        orientation: "vertical"
+
+        #Settings Top
+        MDBoxLayout:
+            orientation: "horizontal"
+            md_bg_color: app.bar_color
+            size_hint: 1, .38
+
+            MDBoxLayout:
+                md_bg_color: app.bar_color
+                size_hint: .05, 1
+
+            MDBoxLayout:
+                size_hint: .7, 1
+                md_bg_color: app.bar_color
+
+                Button:
+                    id: back
+                    background_color: 0, 0, 0, 0
+                    pos_hint: {'center_x' : .5, 'center_y' : .5}
+                    size_hint: 1.3, .8
+                    on_press: app.convert_to_speak("Back")
+                    on_press: root.manager.current = 'homeScreen'
+
+                    Image:
+                        id: back_img
+                        source: 'Assets/Icons/Back Button.png'
+                        pos: self.parent.pos
+                        size: self.parent.size
+
+            MDBoxLayout:
+                md_bg_color: app.bar_color
+                size_hint: 1.3, 1
+                pos_hint: {'top': True}
+
+                Image:
+                    id: settingsPage_img
+                    source: "Assets/Icons/SETTINGS PAGE.png"
+                    #pos_hint: {'center_x' : -1, 'center_y' : .5}
+                    pos: self.parent.pos
+                    size: self.parent.size
+
+        CustomBoxLayout:
+            orientation: "vertical"
+            size_hint: 1, .1
+
+        #FONT SIZE SETTINGS
+        MDBoxLayout:
+            orientation: "vertical"
+            md_bg_color: app.settings_box_color
+            size_hint: 1, .2
+
+            Image:
+                id: fontSize_img
+                source: "Assets/Icons/Font Size.png"
+
+        CustomBoxLayout:
+            orientation: "vertical"
+            size_hint: 1, 1.2
+
+            CustomBoxLayout:
+
+                Image:
+                    id: fontSizeNote_img
+                    source: "Assets/Icons/Font size notes.png"
+                    pos: self.parent.pos
+                    size: self.parent.size
+
+            CustomBoxLayout:
+                size_hint: 1, .5
+                padding: 5
+                spacing: 2
+
+                ToggleButton:
+                    background_color: 0, 0, 0, 0
+                    group: "fontSize"
+                    on_press: app.convert_to_speak("40p")
+                    on_press: app.forty_button()
+
+                    Image:
+                        id: forty
+                        source: "Assets/Icons/40 pt.png"
+                        pos: self.parent.pos
+                        size: self.parent.size
+
+                ToggleButton:
+                    background_color: 0, 0, 0, 0
+                    group: "fontSize"
+                    on_press: app.convert_to_speak("48p")
+                    on_press: app.fortyeight_button()
+
+                    Image:
+                        id: forty_eight
+                        source: "Assets/Icons/48 pt.png"
+                        pos: self.parent.pos
+                        size: self.parent.size
+
+                ToggleButton:
+                    background_color: 0, 0, 0, 0
+                    group: "fontSize"
+                    on_press: app.convert_to_speak("56p")
+                    on_press: app.fiftysix_button()
+
+                    Image:
+                        id: fifty_six
+                        source: "Assets/Icons/56 pt.png"
+                        pos: self.parent.pos
+                        size: self.parent.size
+
+        #SOUND VOLUME SETTINGS
+        MDBoxLayout:
+            orientation: "vertical"
+            md_bg_color: app.settings_box_color
+            size_hint: 1, .2
+
+            Image:
+                id: soundVolume_img
+                source: "Assets/Icons/Volume.png"
+                pos: self.parent.pos
+                #pos_hint: {'center_x' : .5, 'center_y' : .5}
+                size: self.parent.size
+
+        CustomBoxLayout:
+            orientation: "vertical"
+            size_hint: 1, .7
+
+            CustomBoxLayout:
+                orientation: "vertical"
+
+                Image:
+                    id: soundVolumeNote_img
+                    source: "Assets/Icons/Sound volume note.png"
+                    pos: self.parent.pos
+                    size: self.parent.size
+
+                MDSlider:
+                    id: volume_slider
+                    min: 0
+                    max: 1
+                    value: 0.5
+                    on_value: root.vol(self.value)
+                    active: True
+                    hint: False
+                    color: app.slider_color
+                    thumb_color_active: app.slider_thumb_color
+                    thumb_color_inactive: app.slider_thumb_color
+                    track_color_active: [1, 1, 1, 1]
+                    track_color_inactive: [1, 1, 1, 1]
+
+        #COLOR CONTRAST SETTINGS
+        MDBoxLayout:
+            orientation: "vertical"
+            md_bg_color: app.settings_box_color
+            size_hint: 1, .2
+
+            Image:
+                id: contrast_img
+                source: "Assets/Icons/Contrast.png"
+                pos: self.parent.pos
+                #pos_hint: {'center_x' : .5, 'center_y' : .5}
+                size: self.parent.size
+
+        CustomBoxLayout:
+            orientation: "vertical"
+            size_hint: 1, 1.2
+
+
+            CustomBoxLayout:
+
+                Image:
+                    id: contrastNote_img
+                    source: "Assets/Icons/Contrast note.png"
+                    #pos: self.parent.pos
+                    #size: self.parent.size
+
+            CustomBoxLayout:
+                id: "sample"
+                size_hint: 1, 2
+
+                GridLayout:
+                    padding: 8
+                    spacing: 5
+                    rows: 2
+                    cols: 2
+
+                    ToggleButton:
+                        background_color: 0, 0, 0, 0
+                        group: "colorContrast"
+                        color: {'normal': (0,0,0,1), 'down': (0,0,0,1)} [self.state]
+                        on_press: app.convert_to_speak("Normal")
+                        on_press: app.normal_color()
+
+                        Image:
+                            id: normal
+                            source: "Assets/Icons/Normal Button.png"
+                            pos: self.parent.pos
+                            size: self.parent.size
+
+
+                    ToggleButton:
+                        background_color: 0, 0, 0, 0
+                        group: "colorContrast"
+                        on_press: app.convert_to_speak("High Contrast")
+                        on_press: app.high_contrast()
+
+                        Image:
+                            id: high_contrast
+                            source: "Assets/Icons/High Contrast.png"
+                            pos: self.parent.pos
+                            size: self.parent.size
+
+                    ToggleButton:
+                        background_color: 0, 0, 0, 0
+                        group: "colorContrast"
+                        on_press: app.convert_to_speak("Invert Color")
+                        on_press: app.invert_color()
+
+                        Image:
+                            id: invert
+                            source: "Assets/Icons/Invert Colors.png"
+                            pos: self.parent.pos
+                            size: self.parent.size
+
+                    ToggleButton:
+                        background_color: 0, 0, 0, 0
+                        group: "colorContrast"
+                        on_press: app.convert_to_speak("Grayscale")
+                        on_press: app.grayscale_color()
+
+                        Image:
+                            id: grayscale
+                            source: "Assets/Icons/Grayscale.png"
+                            pos: self.parent.pos
+                            size: self.parent.size
+
+
+<CaptureScreen>:
+    MDBoxLayout:
+        md_bg_color: 0,0,0,0
+        orientation: "vertical"
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            md_bg_color: app.bar_color
+            size_hint: 1, .15
+
+            MDBoxLayout:
+                md_bg_color: app.bar_color
+                size_hint: .05, 1
+
+            MDBoxLayout:
+                size_hint: .7, 1
+                md_bg_color: app.bar_color
+
+                Button:
+                    background_color: 0, 0, 0, 0
+                    pos_hint: {'center_x' : .5, 'center_y' : .5}
+                    size_hint: 1.3, .8
+                    on_press: app.convert_to_speak("Back")
+                    on_press: root.manager.current = 'homeScreen'
+
+                    Image:
+                        id: backC_img
+                        source: "Assets/Icons/Back Button.png"
+                        pos: self.parent.pos
+                        size: self.parent.size
+
+
+            MDBoxLayout:
+                md_bg_color: app.bar_color
+                size_hint: 1.3, 1
+                pos_hint: {'top': True}
+                Image:
+                    id: capturePage_img
+                    source: "Assets/Icons/CAPTURE PAGE.png"
+                    #pos_hint: {'center_x' : -1, 'center_y' : .5}
+                    pos: self.parent.pos
+                    size: self.parent.size
+
+
+        RelativeLayout:
+            size_hint: 1, 1
+            id: cameraLayout
+            background_color: 1, 0, 0, 1
+            multiline: True
+
+            Camera:
+                id: camera
+                resolution: (640, 480)
+                play: True
+
+            MDFlatButton:
+                pos: 1, .5
+                size: self.parent.size
+                md_bg_color: 0, 0, 0, 0
+                on_press: app.convert_to_speak("Capturing")
+                on_press: root.capture()
+
+                Image:
+                    id: tapCapture
+                    source: "Assets/Icons/DOUBLE TAP TO CAPTURE.png"
+                    pos: self.parent.pos
+                    size: self.parent.size
+
+        MDBoxLayout:
+            orientation: "vertical"
+            md_bg_color: app.bar_color
+            size_hint: 1, .45
+            padding: 5
+
+            MDBoxLayout:
+                md_bg_color: app.bar_color
+
+                Button:
+                    pos: self.parent.pos
+                    size: self.parent.size
+                    background_color: 0, 0, 0, 0
+                    on_press: app.convert_to_speak("Flash")
+
+                    Image:
+                        id: flashButton_img
+                        source: "Assets/Icons/Flash Button.png"
+                        pos: self.parent.pos
+                        size: self.parent.size
+
+            MDBoxLayout:
+                md_bg_color: app.bar_color
+
+                Button:
+                    pos: self.parent.pos
+                    size: self.parent.size
+                    background_color: 0, 0, 0, 0
+                    on_press: app.convert_to_speak("Repeat")
+                    on_press: root.manager.current = 'captureScreen'
+
+                    Image:
+                        id: repeat_img
+                        source: "Assets/Icons/Repeat Button.png"
+                        pos: self.parent.pos
+                        size: self.parent.size
+
+<ResultScreen>:
+    on_enter: app.convert_to_speak(totalCurrency.text)
+
+    MDBoxLayout:
+        md_bg_color: 0,0,0,0
+        orientation: "vertical"
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            md_bg_color: app.bar_color
+            size_hint: 1, .15
+
+            MDBoxLayout:
+                md_bg_color: app.bar_color
+                size_hint: .05, 1
+
+            MDBoxLayout:
+                size_hint: .7, 1
+                md_bg_color: app.bar_color
+
+                Button:
+                    background_color: 0, 0, 0, 0
+                    pos_hint: {'center_x' : .5, 'center_y' : .5}
+                    size_hint: 1.3, .8
+                    on_press: app.convert_to_speak("Back")
+                    on_press: root.manager.current = 'captureScreen'
+
+                    Image:
+                        id: backR_img
+                        source: "Assets/Icons/Back Button.png"
+                        pos: self.parent.pos
+                        size: self.parent.size
+
+            MDBoxLayout:
+                md_bg_color: app.bar_color
+                size_hint: 1.3, 1
+                pos_hint: {'top': True}
+
+                Image:
+                    id: capturePage_img
+                    source: "Assets/Icons/RESULT PAGE.png"
+                    #pos_hint: {'center_x' : -1, 'center_y' : .5}
+                    pos: self.parent.pos
+                    size: self.parent.size
+
+        CustomBoxLayout:
+            padding: 25
+
+            MDCard:
+                orientation: "vertical"
+                md_bg_color: app.result_card_color
+                pos_hint: {'center_x' : 1, 'center_y' : .5}
+                size_hint: .04, 1
+                padding: 10
+
+                MDBoxLayout:
+                    md_bg_color: app.settings_box_color
+                    size_hint: 1, 0.3
+
+                    Image:
+                        id: detected_currency
+                        source: "Assets/Icons/DETECTED CURRENCIES.png"
+                        pos: self.parent.pos
+                        size: self.parent.size
+
+                MDBoxLayout:
+                    md_bg_color: app.result_card_color
+
+                    Image:
+                        id: image_display
+                        size: self.parent.size
+                        height: '300dp'
+                        source:''
+
+                MDBoxLayout:
+                    orientation: "vertical"
+                    md_bg_color: app.settings_box_color
+
+                    Image:
+                        id: total_currency
+                        source: "Assets/Icons/Total Currency.png"
+                        pos: self.parent.pos
+                        size: self.parent.size
+
+                    MDLabel:
+                        id: totalCurrency
+                        text: ""
+                        theme_text_color: "Custom"
+                        text_color: app.font_color_result
+                        halign: "center"
+                        bold: True
+                        font_size: app.fontSize
+
+        MDBoxLayout:
+            orientation: "vertical"
+            md_bg_color: app.bar_color
+            size_hint: 1, .45
+            padding: 5
+
+            MDBoxLayout:
+                md_bg_color: app.bar_color
+
+                Button:
+                    pos: self.parent.pos
+                    size: self.parent.size
+                    background_color: 0, 0, 0, 0
+                    on_press: app.convert_to_speak("Home")
+                    on_press: root.manager.current = 'homeScreen'
+
+                    Image:
+                        id: homeButton_img
+                        source: "Assets/Icons/Home Button.png"
+                        pos: self.parent.pos
+                        size: self.parent.size
+
+            MDBoxLayout:
+                md_bg_color: app.bar_color
+
+                Button:
+                    pos: self.parent.pos
+                    size: self.parent.size
+                    background_color: 0, 0, 0, 0
+                    on_press: app.convert_to_speak("Settings")
+                    on_press: root.manager.current = 'settingsScreen'
+
+                    Image:
+                        id: settings_img
+                        source: "Assets/Icons/Settings Button.png"
+                        pos: self.parent.pos
+                        size: self.parent.size
+
+
+
+
